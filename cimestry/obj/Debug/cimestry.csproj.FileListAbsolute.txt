@@ -1,0 +1,18 @@
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\cimestry\bin\Debug\cimestry.exe.config
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\cimestry\bin\Debug\cimestry.exe
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\cimestry\bin\Debug\cimestry.pdb
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\cimestry\obj\Debug\cimestry.csprojResolveAssemblyReference.cache
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\cimestry\obj\Debug\cimestry.exe
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\cimestry\obj\Debug\cimestry.pdb
+C:\Users\Omri\Desktop\cimestry\cimestry\bin\Debug\cimestry.exe.config
+C:\Users\Omri\Desktop\cimestry\cimestry\obj\Debug\cimestry.exe
+C:\Users\Omri\Desktop\cimestry\cimestry\obj\Debug\cimestry.pdb
+C:\Users\Omri\Desktop\cimestry\cimestry\bin\Debug\cimestry.exe
+C:\Users\Omri\Desktop\cimestry\cimestry\bin\Debug\cimestry.pdb
+C:\Users\Omri\Desktop\cimestry\cimestry\obj\Debug\cimestry.csprojResolveAssemblyReference.cache
+C:\Users\Omri\Desktop\cimestry\periodic-table\cimestry\bin\Debug\cimestry.exe.config
+C:\Users\Omri\Desktop\cimestry\periodic-table\cimestry\obj\Debug\cimestry.exe
+C:\Users\Omri\Desktop\cimestry\periodic-table\cimestry\obj\Debug\cimestry.pdb
+C:\Users\Omri\Desktop\cimestry\periodic-table\cimestry\obj\Debug\cimestry.csprojResolveAssemblyReference.cache
+C:\Users\Omri\Desktop\cimestry\periodic-table\cimestry\bin\Debug\cimestry.exe
+C:\Users\Omri\Desktop\cimestry\periodic-table\cimestry\bin\Debug\cimestry.pdb
