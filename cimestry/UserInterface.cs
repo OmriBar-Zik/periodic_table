@@ -99,6 +99,9 @@ namespace cimestry
                 case "type":
                     Console.WriteLine("the type of {0} is {1}", KeyWords[1], N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][3]);
                     break;
+                case "all":
+                    Console.WriteLine("all the information about {0}: {1}",KeyWords[1],string.Join(" ",N.MaterialsInformtion[ProcessMaterials(KeyWords[1])]));
+                    break;
             }
             Console.ResetColor();
         }
@@ -132,8 +135,6 @@ namespace cimestry
                 case "printall":
                     PrintAllMaterials();
                     return "skip ";
-                case "":
-                    return "skip";
             }
             return Commands + ' ';
         }
@@ -183,27 +184,28 @@ namespace cimestry
             }
         }
 
-
         private static bool ErrorChecker(string[] check)
         {
             int ret = 0;
             if (check[0] == "skip")
                 return false;
+
             if (check[0] == null)
             {
                 Console.WriteLine(ColoredComment("\nthe sytstem did not recognise the keyword.\nhere is the list of keyword and commands", "red"));
                 PringCommandsList();
                 ret = 1;
             }
+
             if (check[1] == null)
             {
                 ColoredComment("the sytstem did not recognise the material / atomic number.\nthe system only have the first 20 materials.\n", "red");
                 ret = 1;
             }
+
             if (ret == 1)
-            {
                 return false;
-            }
+
             return true;
         }
 

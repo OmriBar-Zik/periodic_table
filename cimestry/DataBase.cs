@@ -10,7 +10,7 @@ namespace cimestry
     {
         public string[][] MaterialsInformtion = new string[20][];
 
-        public string[] KeyWord = { "skip", "name", "number", "symbol", "type" };
+        public string[] KeyWord = { "skip", "name", "number", "symbol", "type", "all" };
 
         public DataBase()
         {
