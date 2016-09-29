@@ -75,7 +75,7 @@ namespace cimestry
                     }
                 }
             }
-            if (ErrorChecker(KeyWord,Materials))
+            if (ErrorChecker(KeyWord, Materials))
             {
                 MutipulQuests(KeyWord, Materials);
                 return;
@@ -86,10 +86,10 @@ namespace cimestry
         {
             for (int J = 0; J < KeyWord.ToArray().Length; J++)
             {
-                Console.WriteLine(ColoredComment(KeyWord[J],"cyan"));
+                Console.WriteLine(ColoredComment(KeyWord[J], "cyan"));
                 for (int K = 0; K < Materials.ToArray().Length; K++)
                 {
-                    string[] Mul = {KeyWord[J],Materials[K]};
+                    string[] Mul = { KeyWord[J], Materials[K] };
                     ProcessInformation(Mul);
                 }
             }
@@ -114,6 +114,9 @@ namespace cimestry
                     break;
                 case "all":
                     Console.WriteLine("all the information about {0}: {1}", KeyWords[1], string.Join(" ", N.MaterialsInformtion[ProcessMaterials(KeyWords[1])]));
+                    break;
+                case "arrangement":
+                    Console.WriteLine("the arrangement of electrons for {0} is {1}", KeyWords[1], MaterialProperties.ArrangementOfElectrons(N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][0]));
                     break;
             }
             Console.ResetColor();
@@ -200,19 +203,21 @@ namespace cimestry
         private static bool ErrorChecker(List<string> check1, List<string> check2)
         {
             int ret = 0;
-            if (check1[0] == "skip")
-                return false;
-            for (int J = 0; J < check1.ToArray().Length; J++)
+            if (!(check1.Count == 0))
             {
-                if (check1[J] == null)
-                {
-                    Console.WriteLine(ColoredComment("\nthe sytstem did not recognise the keyword.\nhere is the list of keyword and commands", "red"));
-                    PringCommandsList();
-                    ret = 1;
-                }
+                if (check1[0] == "skip")
+                    return false;
+            }
+            else
+            {
+                Console.WriteLine(ColoredComment("\nthe sytstem did not recognise the keyword.\nhere is the list of keyword and commands", "red"));
+                PringCommandsList();
+                ret = 1;
             }
 
-            if (check2 == null)
+
+
+            if (check2.Count == 0)
             {
                 ColoredComment("the sytstem did not recognise the material / atomic number.\nthe system only have the first 20 materials.\n", "red");
                 ret = 1;

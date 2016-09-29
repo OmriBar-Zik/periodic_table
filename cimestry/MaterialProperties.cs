@@ -25,7 +25,7 @@ namespace cimestry
             return Tostring;
         }
 
-        public static List<int> ArrangementOfElectrons(string Electrons)
+        public static string ArrangementOfElectrons(string Electrons)
         {
             List<int> EnergyLevels = new List<int>();
             int ElectronsNum = int.Parse(Electrons);
@@ -45,7 +45,7 @@ namespace cimestry
                 EnergyLevels.Insert(0, 2);
             }
             EnergyLevels.Add(ElectronsNum);
-            return EnergyLevels;
+            return string.Join(",",EnergyLevels);
 
         }
 
