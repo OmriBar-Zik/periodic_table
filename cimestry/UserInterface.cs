@@ -40,11 +40,11 @@ namespace cimestry
                 words.Add("ffff");
                 words.Add("ffff");
             }
-            for (int i = 0; i < words.ToArray().Length ; i++)
+            for (int i = 0; i < words.ToArray().Length; i++)
             {
                 if (words[i] == "")
                 {
-                    words.Remove("");                    
+                    words.Remove("");
                 }
             }
             return words;
@@ -52,14 +52,15 @@ namespace cimestry
 
         private static void CheckKeyWords(List<string> Words)
         {
-            string[] KeyWord = new string[2];
+            List<string> KeyWord = new List<string>();
+            List<string> Materials = new List<string>();
             for (int K = 0; K < Words.ToArray().Length; K++)
             {
                 for (int J = 0; J < N.KeyWord.Length; J++)
                 {
                     if (Words[K].ToLower() == N.KeyWord[J])
                     {
-                        KeyWord[0] = Words[K];
+                        KeyWord.Add(Words[K]);
                         break;
                     }
                 }
@@ -69,16 +70,28 @@ namespace cimestry
                     {
                         if (char.ToUpper(Words[K][0]) + Words[K].Substring(1) == N.MaterialsInformtion[L][I])
                         {
-                            KeyWord[1] = Words[K];
-                            break;
+                            Materials.Add(Words[K]);
                         }
                     }
                 }
             }
-            if (ErrorChecker(KeyWord))
+            if (ErrorChecker(KeyWord,Materials))
             {
-                ProcessInformation(KeyWord);
+                MutipulQuests(KeyWord, Materials);
                 return;
+            }
+        }
+
+        private static void MutipulQuests(List<string> KeyWord, List<string> Materials)
+        {
+            for (int J = 0; J < KeyWord.ToArray().Length; J++)
+            {
+                Console.WriteLine(ColoredComment(KeyWord[J],"cyan"));
+                for (int K = 0; K < Materials.ToArray().Length; K++)
+                {
+                    string[] Mul = {KeyWord[J],Materials[K]};
+                    ProcessInformation(Mul);
+                }
             }
         }
 
@@ -100,7 +113,7 @@ namespace cimestry
                     Console.WriteLine("the type of {0} is {1}", KeyWords[1], N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][3]);
                     break;
                 case "all":
-                    Console.WriteLine("all the information about {0}: {1}",KeyWords[1],string.Join(" ",N.MaterialsInformtion[ProcessMaterials(KeyWords[1])]));
+                    Console.WriteLine("all the information about {0}: {1}", KeyWords[1], string.Join(" ", N.MaterialsInformtion[ProcessMaterials(KeyWords[1])]));
                     break;
             }
             Console.ResetColor();
@@ -184,24 +197,27 @@ namespace cimestry
             }
         }
 
-        private static bool ErrorChecker(string[] check)
+        private static bool ErrorChecker(List<string> check1, List<string> check2)
         {
             int ret = 0;
-            if (check[0] == "skip")
+            if (check1[0] == "skip")
                 return false;
-
-            if (check[0] == null)
+            for (int J = 0; J < check1.ToArray().Length; J++)
             {
-                Console.WriteLine(ColoredComment("\nthe sytstem did not recognise the keyword.\nhere is the list of keyword and commands", "red"));
-                PringCommandsList();
-                ret = 1;
+                if (check1[J] == null)
+                {
+                    Console.WriteLine(ColoredComment("\nthe sytstem did not recognise the keyword.\nhere is the list of keyword and commands", "red"));
+                    PringCommandsList();
+                    ret = 1;
+                }
             }
 
-            if (check[1] == null)
+            if (check2 == null)
             {
                 ColoredComment("the sytstem did not recognise the material / atomic number.\nthe system only have the first 20 materials.\n", "red");
                 ret = 1;
             }
+
 
             if (ret == 1)
                 return false;
