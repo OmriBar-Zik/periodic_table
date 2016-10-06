@@ -15,8 +15,23 @@ namespace cimestry
             while (true)
             {
                 Console.WriteLine(ColoredComment("Enter your question about the periodic table:", "yellow"));
-                CheckKeyWords(SentenceToWords(SpecialCommands(Console.ReadLine())));
+                CheckKeyWords(SentenceToWords(SpecialCharacters(SpecialCommands(Console.ReadLine()))));
             }
+        }
+
+        private static string SpecialCharacters(string Sentence)
+        {
+            for (int i = 0; i < Sentence.Length; i++)
+            {
+                for (int k = 0; k < N.SpecialCharacters.Length; k++)
+                {
+                    if (0 == Sentence[i].CompareTo(N.SpecialCharacters[k]))
+                    {
+                        Sentence = Sentence.Replace(N.SpecialCharacters[k],' ');
+                    }
+                }
+            }
+            return Sentence;
         }
 
         private static List<string> SentenceToWords(string Sentence)
@@ -35,17 +50,10 @@ namespace cimestry
 
         private static List<string> TestWords(List<string> words)
         {
-            if (words.ToArray().Length < 2)
-            {
-                words.Add("ffff");
-                words.Add("ffff");
-            }
-            for (int i = 0; i < words.ToArray().Length; i++)
+            for (int i = words.ToArray().Length - 1; !(i < 0); i--)
             {
                 if (words[i] == "")
-                {
                     words.Remove("");
-                }
             }
             return words;
         }
