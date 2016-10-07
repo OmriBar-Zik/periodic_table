@@ -121,10 +121,13 @@ namespace cimestry
                     Console.WriteLine("the type of {0} is {1}", KeyWords[1], N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][3]);
                     break;
                 case "all":
-                    Console.WriteLine("all the information about {0}: {1}", KeyWords[1], string.Join(" ", N.MaterialsInformtion[ProcessMaterials(KeyWords[1])]));
+                    Console.WriteLine("all the information about {0}: {1} {2}", KeyWords[1], string.Join(" ", N.MaterialsInformtion[ProcessMaterials(KeyWords[1])]), MaterialProperties.ArrangementOfElectrons(N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][0]));
                     break;
-                case "arrangement":
-                    Console.WriteLine("the arrangement of electrons for {0} is {1}", KeyWords[1], MaterialProperties.ArrangementOfElectrons(N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][0]));
+                case "configuration":
+                    Console.WriteLine("the configuration of electrons for {0} is {1}", KeyWords[1], MaterialProperties.ArrangementOfElectrons(N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][0]));
+                    break;
+                case "electronegativity":
+                    Console.WriteLine("the electronegativity of {0} is {1}", KeyWords[1], N.MaterialsInformtion[ProcessMaterials(KeyWords[1])][4]);
                     break;
             }
             Console.ResetColor();
@@ -158,6 +161,11 @@ namespace cimestry
                     return "skip ";
                 case "printall":
                     PrintAllMaterials();
+                    return "skip ";
+                case "illuminati":
+                    Console.WriteLine(ColoredComment("ILlumInATi", "green"));
+                    Console.WriteLine(ColoredComment("THE EYE IS WATCHING", "red"));
+                    MaterialProperties.YAY();
                     return "skip ";
             }
             return Commands + ' ';
@@ -222,8 +230,6 @@ namespace cimestry
                 PringCommandsList();
                 ret = 1;
             }
-
-
 
             if (check2.Count == 0)
             {
