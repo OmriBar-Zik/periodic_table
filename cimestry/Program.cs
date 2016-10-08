@@ -10,7 +10,10 @@ namespace cimestry
     {
         static void Main(string[] args)
         {
-            UserInterface.UserInput();
+            
+            UserInterface start = new UserInterface();
+            start.DataBaseCommands();
+            SUI();
         }
 
         public static void SUI()

@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace cimestry
 {
     class UserInterface
     {
-        public static DataBase N = new DataBase();
-        public static void UserInput()
+        DataBase N = new DataBase();
+        DatabaseConnection objConnect;
+        string conString;
+
+        DataSet ds;
+        DataRow dRow;
+
+        int MaxRows;
+        int inc = 0;
+
+
+        public UserInterface()
         {
+            DataBaseCommands();
             List<string> a = new List<string>();
             while (true)
             {
@@ -19,7 +32,36 @@ namespace cimestry
             }
         }
 
-        private static string SpecialCharacters(string Sentence)
+        public void DataBaseCommands()
+        {
+            try
+            {
+                objConnect = new DatabaseConnection();
+                conString = Properties.Settings.Default.PeriodicTableConnectionString;
+
+                objConnect.connection_string = conString;
+
+                objConnect.Sql = Properties.Settings.Default.SQL;
+
+                ds = objConnect.GetConnection;
+                MaxRows = ds.Tables[0].Rows.Count;
+
+                NavigateRecords();
+
+                Console.WriteLine(dRow[4]);
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err.Message);
+            }
+        }
+
+        private void NavigateRecords()
+        {
+            dRow = ds.Tables[0].Rows[inc];
+        }
+
+        private string SpecialCharacters(string Sentence)
         {
             for (int i = 0; i < Sentence.Length; i++)
             {
@@ -27,14 +69,14 @@ namespace cimestry
                 {
                     if (0 == Sentence[i].CompareTo(N.SpecialCharacters[k]))
                     {
-                        Sentence = Sentence.Replace(N.SpecialCharacters[k],' ');
+                        Sentence = Sentence.Replace(N.SpecialCharacters[k], ' ');
                     }
                 }
             }
             return Sentence;
         }
 
-        private static List<string> SentenceToWords(string Sentence)
+        private List<string> SentenceToWords(string Sentence)
         {
             List<string> words = new List<string>();
             for (int i = 0, StartWord = 0; i < Sentence.Length; i++)
@@ -48,7 +90,7 @@ namespace cimestry
             return TestWords(words);
         }
 
-        private static List<string> TestWords(List<string> words)
+        private List<string> TestWords(List<string> words)
         {
             for (int i = words.ToArray().Length - 1; !(i < 0); i--)
             {
@@ -58,7 +100,7 @@ namespace cimestry
             return words;
         }
 
-        private static void CheckKeyWords(List<string> Words)
+        private void CheckKeyWords(List<string> Words)
         {
             List<string> KeyWord = new List<string>();
             List<string> Materials = new List<string>();
@@ -90,7 +132,7 @@ namespace cimestry
             }
         }
 
-        private static void MutipulQuests(List<string> KeyWord, List<string> Materials)
+        private void MutipulQuests(List<string> KeyWord, List<string> Materials)
         {
             for (int J = 0; J < KeyWord.ToArray().Length; J++)
             {
@@ -103,7 +145,7 @@ namespace cimestry
             }
         }
 
-        private static void ProcessInformation(string[] KeyWords)
+        private void ProcessInformation(string[] KeyWords)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             switch (KeyWords[0])
@@ -133,7 +175,7 @@ namespace cimestry
             Console.ResetColor();
         }
 
-        private static int ProcessMaterials(string Materials)
+        private int ProcessMaterials(string Materials)
         {
             for (int L = 0; L < N.MaterialsInformtion.Length; L++)
             {
@@ -149,7 +191,7 @@ namespace cimestry
         }
 
 
-        private static string SpecialCommands(string Commands)
+        private string SpecialCommands(string Commands)
         {
             switch (Commands.ToLower())
             {
@@ -171,7 +213,7 @@ namespace cimestry
             return Commands + ' ';
         }
 
-        private static void PringCommandsList()
+        private void PringCommandsList()
         {
             Console.WriteLine();
             Console.WriteLine(ColoredComment("comands:", "green"));
@@ -186,7 +228,7 @@ namespace cimestry
             Console.WriteLine();
         }
 
-        private static string ColoredComment(string Command, string color)
+        private string ColoredComment(string Command, string color)
         {
             switch (color)
             {
@@ -208,7 +250,7 @@ namespace cimestry
             return "";
         }
 
-        private static void PrintAllMaterials()
+        private void PrintAllMaterials()
         {
             for (int i = 0; i < N.MaterialsInformtion.Length; i++)
             {
@@ -216,7 +258,7 @@ namespace cimestry
             }
         }
 
-        private static bool ErrorChecker(List<string> check1, List<string> check2)
+        private bool ErrorChecker(List<string> check1, List<string> check2)
         {
             int ret = 0;
             if (!(check1.Count == 0))

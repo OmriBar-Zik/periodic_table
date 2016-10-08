@@ -22,3 +22,7 @@ E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מח�
 E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\bin\Debug\cimestry.exe
 E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\bin\Debug\cimestry.pdb
 E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\obj\Debug\cimestry.csprojResolveAssemblyReference.cache
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\bin\Debug\Resources\PeriodicTable_log.ldf
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\bin\Debug\Resources\PeriodicTable.mdf
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\obj\Debug\cimestry.Properties.Resources.resources
+E:\אישי לא  להיכנס אבא\עומרי\בית ספר\כיתה י\מחשבים\cimestry\periodic_table\cimestry\obj\Debug\cimestry.csproj.GenerateResource.Cache
